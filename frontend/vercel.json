@@ -2,14 +2,22 @@
     "version": 2,
     "builds": [
         {
+            "src": "src/assets/**",
+            "use": "@vercel/static"
+        },
+        {
             "src": "vite.config.js",
             "use": "@vercel/static"
         }
     ],
     "routes": [
         {
+            "src": "/assets/(.*)",
+            "dest": "/src/assets/$1"
+        },
+        {
             "src": "/(.*)",
-            "dest": "/src/$1"
+            "dest": "/$1"
         }
     ]
 }
