@@ -8,12 +8,12 @@
     ],
     "routes": [
         {
+            "src": "/@/(.*)",
+            "dest": "/src/$1"
+        },
+        {
             "src": "/(.*)",
-            "dest": "/$1",
-            "rewrite": {
-                "source": "/@/(.*)",
-                "destination": "/src/$1"
-            }
+            "dest": "/$1"
         }
     ]
 }
