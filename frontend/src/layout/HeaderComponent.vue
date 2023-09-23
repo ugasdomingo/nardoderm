@@ -10,7 +10,7 @@ const links = [
 
 <template>
     <header>
-        <h1>Nardo Derm</h1>
+        <img src="../assets/img/logo.webp" alt="logo" />
         <nav>
             <ul>
                 <li v-for="link in links" :key="link.name">
@@ -25,16 +25,16 @@ const links = [
 
 <style scoped lang="scss">
 header {
+    height: 10%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 4rem;
-    background-color: var(--color-primary);
-}
+    padding: 0 4rem;
+    background-color: var(--color-white);
 
-h1 {
-    margin: 0;
-    color: var(--color-white);
+    img {
+        width: 10%;
+    }
 }
 
 nav ul {
@@ -49,13 +49,13 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
     padding: 0.5rem 1rem;
-    font-size: 1.25rem;
-    color: var(--color-white);
+    font-size: 1.5rem;
+    color: var(--color-primary);
 }
 
 nav ul li a:hover {
-    color: var(--color-primary);
-    background-color: var(--color-white);
+    color: var(--color-white);
+    background-color: var(--color-primary);
     border-radius: 0.5rem;
 }
 </style>

@@ -1,6 +1,21 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { servicesInfo } from '../static/servicesInfo';
+
+const scrollY = ref(0);
+
+const handleScroll = () => {
+    scrollY.value = window.scrollY;
+};
+
+onMounted(() => {
+    window.addEventListener('scroll', handleScroll);
+});
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll);
+});
 </script>
 
 <template>
@@ -8,13 +23,18 @@ import { servicesInfo } from '../static/servicesInfo';
         <h2>With our clients in mind,</h2>
         <h4>we work meticulously to provide the best services for them!</h4>
         <div class="display-services">
-            <div class="services" v-for="service in servicesInfo" :key="service.title">
-                <div class="img-container">
-                    <img :src="service.image" :alt="service.title" />
+            <div
+                class="services"
+                v-for="service in servicesInfo"
+                :key="service.title"
+                :class="scrollY >= service.animation ? 'animationLeft' : 'hide'"
+            >
+                <img :src="service.image" :alt="service.title" />
+                <div class="content">
+                    <h3>{{ service.title }}</h3>
+                    <p>{{ service.description }}</p>
+                    <RouterLink :to="service.path">Learn More</RouterLink>
                 </div>
-                <h3>{{ service.title }}</h3>
-                <p>{{ service.description }}</p>
-                <RouterLink :to="service.path">Learn More</RouterLink>
             </div>
         </div>
     </section>
@@ -26,76 +46,87 @@ import { servicesInfo } from '../static/servicesInfo';
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
-    padding: 2rem 0;
-    width: 100%;
-    color: var(--color-white);
+    padding: 6rem 4rem;
+    gap: 2rem;
     background-color: var(--color-primary);
     h2 {
-        margin-bottom: 0.5rem;
+        font-weight: 700;
+        color: var(--color-white);
+        margin: 0;
     }
     h4 {
-        margin: 0.5rem 0 4rem;
+        font-weight: 400;
+        color: var(--color-tertiary);
+        margin: 0;
     }
     .display-services {
         display: flex;
+        flex-direction: column;
         flex-wrap: wrap;
-        justify-content: center;
         align-items: center;
-        width: 100%;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
         .services {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            margin: 1rem;
-            padding: 1rem;
-            width: 250px;
-            height: 350px;
-            border-radius: 10px;
+            justify-content: space-between;
+            gap: 1rem;
+            margin: 4rem auto;
+            width: 70%;
+            height: 200px;
+            border-radius: 1rem;
+            background-color: var(--color-white);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-
-            .img-container {
-                width: 150px;
-                height: 150px;
+            img {
+                height: 300px;
+                object-fit: cover;
+                border-radius: 1rem;
+            }
+            .content {
                 display: flex;
+                flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                margin-bottom: 1rem;
-                border-radius: 50%;
-                background-color: var(--color-secondary);
-            }
-            img {
-                width: 100px;
-                height: 100px;
-                margin-bottom: 1rem;
-                object-fit: cover;
-            }
-            h3 {
-                font-size: 1.25rem;
-                font-weight: 700;
-                margin-bottom: 1rem;
-            }
-            p {
-                font-size: 1rem;
-                font-weight: 400;
-                margin-bottom: 1rem;
-            }
-            a {
-                font-size: 1rem;
-                font-weight: 700;
-                color: #fff;
-                background-color: var(--color-secondary);
-                padding: 0.5rem 1rem;
-                border-radius: 5px;
-                text-decoration: none;
-                &:hover {
-                    background-color: var(--color-white);
+                gap: 1rem;
+                padding: 1rem;
+                h3 {
+                    font-weight: 700;
                     color: var(--color-primary);
+                    margin: 0;
+                }
+                p {
+                    font-weight: 400;
+                    color: var(--color-tertiary);
+                    text-align: center;
+                }
+                RouterLink {
+                    font-weight: 700;
+                    color: var(--color-primary);
+                    text-decoration: none;
+                    &:hover {
+                        text-decoration: underline;
+                    }
                 }
             }
         }
+    }
+}
+.animationLeft {
+    animation: moveInLeft 1s ease-in-out;
+}
+.hide {
+    opacity: 0;
+}
+
+//animations
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+    80% {
+        transform: translateX(1rem);
     }
 }
 </style>

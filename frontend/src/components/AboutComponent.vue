@@ -1,20 +1,32 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue';
+
+const scrollY = ref(0);
+
+const handleScroll = () => {
+    scrollY.value = window.scrollY;
+};
+
+onMounted(() => {
+    window.addEventListener('scroll', handleScroll);
+});
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll);
+});
+</script>
 
 <template>
     <section class="about-container">
-        <div class="left-content">
-            <img src="../assets/img/about-img.webp" alt="aboutImg" />
-            <div>
-                <h2>Welcome!</h2>
-                <h4>Advances of science make easier our daily life!</h4>
-            </div>
-        </div>
-        <div class="right-container">
-            <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt aut rerum similique
-                nobis quaerat deserunt enim earum laboriosam asperiores pariatur
-            </p>
-            <h6><span>Nardo Derm</span>- Our mission</h6>
+        <img
+            src="../assets/img/about-img.webp"
+            alt="aboutImg"
+            :class="scrollY >= 200 ? 'animationLeft' : 'hide'"
+        />
+        <div :class="scrollY >= 200 ? 'animationRight' : 'hide'">
+            <h2>How we care the planet</h2>
+            <h4>Advances of science make easier our daily life!</h4>
+            <RouterLink to="/sostenibilidad"> Read more </RouterLink>
         </div>
     </section>
 </template>
@@ -22,48 +34,101 @@
 <style scoped lang="scss">
 .about-container {
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    padding: 2rem 0;
-    margin: 0 2rem;
-    height: 60vh;
-    .left-content {
+    justify-content: center;
+    padding: 6rem 4rem;
+    gap: 2rem;
+    background-color: #f5f5f5;
+    img {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 1rem;
+    }
+    div {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
         align-items: center;
-        width: 50%;
-        img {
-            width: 350px;
-            object-fit: cover;
-            border-radius: 1rem;
+        justify-content: center;
+        h2 {
+            font-weight: 700;
+            color: var(--color-primary);
+            margin: 0;
         }
-        div {
-            padding: 0 1rem;
-            h2 {
-                margin-bottom: 0.5rem;
-                color: var(--color-primary);
-            }
-            h4 {
-                margin-top: 0.75rem;
+        h4 {
+            font-weight: 400;
+            color: var(--color-tertiary);
+            margin: 0;
+        }
+        a {
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            &:hover {
+                color: var(--color-white);
+                background-color: var(--color-primary);
+                border-radius: 0.5rem;
             }
         }
     }
-    .right-container {
-        width: 35%;
-        p {
-            font-size: 1.25rem;
-            font-weight: 300;
-            color: var(--color-black);
-        }
+}
 
-        h6 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: var(--color-primary);
-            margin-top: 1rem;
-            span {
-                font-weight: 700;
-                color: var(--color-black);
+.animationLeft {
+    animation: moveInLeft 1s ease-in-out;
+}
+.animationRight {
+    animation: moveInRight 1s ease-in-out;
+}
+.hide {
+    opacity: 0;
+}
+
+//animations
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+    80% {
+        transform: translateX(1rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+    80% {
+        transform: translateX(-1rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+        padding: 2rem 1rem;
+        img {
+            max-width: 300px;
+        }
+        div {
+            align-items: flex-start;
+            h2 {
+                font-size: 2rem;
+            }
+            h4 {
+                font-size: 1.5rem;
+            }
+            a {
+                font-size: 1.2rem;
             }
         }
     }
