@@ -25,15 +25,35 @@ onUnmounted(() => {
         <div class="display-services">
             <div
                 class="services"
-                v-for="service in servicesInfo"
-                :key="service.title"
-                :class="scrollY >= service.animation ? 'animationLeft' : 'hide'"
+                :class="scrollY >= servicesInfo[0].animation ? 'animationLeft' : 'hide'"
             >
-                <img :src="service.image" :alt="service.title" />
+                <img src="../assets/img/producto1.webp" :alt="servicesInfo[0].title" />
                 <div class="content">
-                    <h3>{{ service.title }}</h3>
-                    <p>{{ service.description }}</p>
-                    <RouterLink :to="service.path">Learn More</RouterLink>
+                    <h3>{{ servicesInfo[0].title }}</h3>
+                    <p>{{ servicesInfo[0].description }}</p>
+                    <RouterLink :to="servicesInfo[0].path">Learn More</RouterLink>
+                </div>
+            </div>
+            <div
+                class="services"
+                :class="scrollY >= servicesInfo[1].animation ? 'animationLeft' : 'hide'"
+            >
+                <img src="../assets/img/producto-2.webp" :alt="servicesInfo[1].title" />
+                <div class="content">
+                    <h3>{{ servicesInfo[1].title }}</h3>
+                    <p>{{ servicesInfo[1].description }}</p>
+                    <RouterLink :to="servicesInfo[1].path">Learn More</RouterLink>
+                </div>
+            </div>
+            <div
+                class="services"
+                :class="scrollY >= servicesInfo[2].animation ? 'animationLeft' : 'hide'"
+            >
+                <img src="../assets/img/producto-3.webp" :alt="servicesInfo[2].title" />
+                <div class="content">
+                    <h3>{{ servicesInfo[2].title }}</h3>
+                    <p>{{ servicesInfo[2].description }}</p>
+                    <RouterLink :to="servicesInfo[2].path">Learn More</RouterLink>
                 </div>
             </div>
         </div>
