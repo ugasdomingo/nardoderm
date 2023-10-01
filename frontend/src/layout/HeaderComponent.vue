@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router';
 const links = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
-    { name: 'Services', path: '/services' }
+    { name: 'Products', path: '/products' }
 ];
 </script>
 

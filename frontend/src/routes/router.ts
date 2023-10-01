@@ -3,8 +3,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 //Import components
 
 import HomePage from '../views/HomePage.vue';
-import AboutPage from '../views/AboutPage.vue';
-import ServicesPage from '../views/ServicesPage.vue';
 
 const routes = [
     {
@@ -15,12 +13,23 @@ const routes = [
     {
         path: '/about',
         name: 'About',
-        component: AboutPage
+        component: () => import('../views/AboutPage.vue')
     },
     {
-        path: '/services',
-        name: 'Services',
-        component: ServicesPage
+        path: '/products',
+        name: 'Products',
+        component: () => import('../views/ProductsPage.vue')
+    },
+    {
+        path: '/products/:id',
+        name: 'OneProduct',
+        component: () => import('../views/OneProductPage.vue')
+    },
+    // Not found page
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'NotFound',
+        component: () => import('../views/NotFoundPage.vue')
     }
 ];
 

@@ -1,9 +1,17 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
 import { ref, onMounted, onUnmounted } from 'vue';
-import { servicesInfo } from '../static/servicesInfo';
+import { productsInfo } from '../static/productsInfo';
+import { useRoute } from 'vue-router';
+
+// Get path from URL
+const route = useRoute();
+const path = route.path;
 
 const scrollY = ref(0);
+const product1 = ref(0);
+const product2 = ref(0);
+const product3 = ref(0);
 
 const handleScroll = () => {
     scrollY.value = window.scrollY;
@@ -11,6 +19,16 @@ const handleScroll = () => {
 
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
+    // Set products scroll show
+    if (path == '/') {
+        product1.value = 1100;
+        product2.value = 1400;
+        product3.value = 1700;
+    } else {
+        product1.value = 0;
+        product2.value = 0;
+        product3.value = 0;
+    }
 });
 
 onUnmounted(() => {
@@ -19,41 +37,32 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <section class="services-container">
+    <section class="product-container">
         <h2>With our clients in mind,</h2>
-        <h4>we work meticulously to provide the best services for them!</h4>
-        <div class="display-services">
-            <div
-                class="services"
-                :class="scrollY >= servicesInfo[0].animation ? 'animationLeft' : 'hide'"
-            >
-                <img src="../assets/img/producto1.webp" :alt="servicesInfo[0].title" />
+        <h4>we work meticulously to provide the best product for them!</h4>
+        <div class="display-product">
+            <div class="product" :class="scrollY >= product1 ? 'animationLeft' : 'hide'">
+                <img src="../assets/img/producto1.webp" :alt="productsInfo[0].title" />
                 <div class="content">
-                    <h3>{{ servicesInfo[0].title }}</h3>
-                    <p>{{ servicesInfo[0].description }}</p>
-                    <RouterLink :to="servicesInfo[0].path">Learn More</RouterLink>
+                    <h3>{{ productsInfo[0].title }}</h3>
+                    <p>{{ productsInfo[0].brief }}</p>
+                    <RouterLink :to="'products/' + productsInfo[0].path">Learn More</RouterLink>
                 </div>
             </div>
-            <div
-                class="services"
-                :class="scrollY >= servicesInfo[1].animation ? 'animationLeft' : 'hide'"
-            >
-                <img src="../assets/img/producto-2.webp" :alt="servicesInfo[1].title" />
+            <div class="product" :class="scrollY >= product2 ? 'animationLeft' : 'hide'">
+                <img src="../assets/img/producto-2.webp" :alt="productsInfo[1].title" />
                 <div class="content">
-                    <h3>{{ servicesInfo[1].title }}</h3>
-                    <p>{{ servicesInfo[1].description }}</p>
-                    <RouterLink :to="servicesInfo[1].path">Learn More</RouterLink>
+                    <h3>{{ productsInfo[1].title }}</h3>
+                    <p>{{ productsInfo[1].brief }}</p>
+                    <RouterLink :to="'products/' + productsInfo[1].path">Learn More</RouterLink>
                 </div>
             </div>
-            <div
-                class="services"
-                :class="scrollY >= servicesInfo[2].animation ? 'animationLeft' : 'hide'"
-            >
-                <img src="../assets/img/producto-3.webp" :alt="servicesInfo[2].title" />
+            <div class="product" :class="scrollY >= product3 ? 'animationLeft' : 'hide'">
+                <img src="../assets/img/producto-3.webp" :alt="productsInfo[2].title" />
                 <div class="content">
-                    <h3>{{ servicesInfo[2].title }}</h3>
-                    <p>{{ servicesInfo[2].description }}</p>
-                    <RouterLink :to="servicesInfo[2].path">Learn More</RouterLink>
+                    <h3>{{ productsInfo[2].title }}</h3>
+                    <p>{{ productsInfo[2].brief }}</p>
+                    <RouterLink :to="'products/' + productsInfo[2].path">Learn More</RouterLink>
                 </div>
             </div>
         </div>
@@ -61,7 +70,7 @@ onUnmounted(() => {
 </template>
 
 <style scoped lang="scss">
-.services-container {
+.product-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -79,7 +88,7 @@ onUnmounted(() => {
         color: var(--color-tertiary);
         margin: 0;
     }
-    .display-services {
+    .display-product {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -87,7 +96,7 @@ onUnmounted(() => {
         justify-content: center;
         gap: 2rem;
         margin-top: 2rem;
-        .services {
+        .product {
             display: flex;
             align-items: center;
             justify-content: space-between;

@@ -60,8 +60,7 @@ import { RouterLink } from 'vue-router';
         animation: fadeIn 1s ease-in-out;
 
         &:hover {
-            background-color: var(--color-white);
-            color: var(--color-primary);
+            background-color: var(--color-secondary);
         }
     }
 }
