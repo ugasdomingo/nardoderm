@@ -30,6 +30,9 @@
         </p>
         <a href="https://wa.me/584126696619"> Contactar </a>
     </main>
+    <section class="logo">
+        <img src="../assets/img/logo.webp" alt="Nardo Derm Logo" />
+    </section>
 </template>
 
 <script setup lang="ts"></script>
@@ -68,5 +71,11 @@ a {
         color: var(--color-primary);
         border: 1px solid var(--color-primary);
     }
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 </style>

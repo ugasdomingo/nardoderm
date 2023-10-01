@@ -7,7 +7,7 @@ import { RouterLink } from 'vue-router';
         <img src="../assets/img/hero.webp" alt="hero" class="hero-big" />
         <h1>Serving Science</h1>
         <h3>And Technology</h3>
-        <router-link to="/services">Products</router-link>
+        <router-link to="/products">Products</router-link>
     </section>
 </template>
 

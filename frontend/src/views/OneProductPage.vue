@@ -3,7 +3,7 @@
         <section class="left-content">
             <h1>{{ product?.title }}</h1>
             <img :src="productImage" :alt="product?.title" />
-            <button href="https://wa.me/+34604822385">PLACE AN ORDER</button>
+            <a href="https://wa.me/584126696619" target="_blank">PLACE AN ORDER</a>
         </section>
         <section class="right-content">
             <div v-html="product?.description" class="product-description"></div>
@@ -27,7 +27,7 @@ onBeforeMount(() => {
     for (let i = 0; i < productsInfo.length; i++) {
         if (productsInfo[i].path === path) {
             product.value = productsInfo[i];
-            productImage.value = productsInfo[i].image;
+            productImage.value = productsInfo[i].imageHD;
         }
     }
     // If product is null, redirect to 404
@@ -68,7 +68,7 @@ onBeforeMount(() => {
             height: auto;
         }
 
-        button {
+        a {
             width: 100%;
             max-width: 400px;
             padding: 1rem 2rem;
@@ -80,6 +80,7 @@ onBeforeMount(() => {
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease-in-out;
+            text-align: center;
 
             &:hover {
                 background-color: var(--color-white);
