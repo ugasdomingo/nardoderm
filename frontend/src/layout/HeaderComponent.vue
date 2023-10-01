@@ -2,7 +2,6 @@
 import { RouterLink } from 'vue-router';
 
 const links = [
-    { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Products', path: '/products' }
 ];
@@ -10,7 +9,9 @@ const links = [
 
 <template>
     <header>
-        <img src="../assets/img/logo.webp" alt="logo" />
+        <RouterLink to="/">
+            <img src="../assets/img/logo.webp" alt="logo" />
+        </RouterLink>
         <nav>
             <ul>
                 <li v-for="link in links" :key="link.name">
@@ -57,5 +58,25 @@ nav ul li a:hover {
     color: var(--color-white);
     background-color: var(--color-primary);
     border-radius: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        height: 20%;
+        padding: 0 2rem;
+
+        img {
+            width: 60%;
+        }
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    nav ul li a {
+        font-size: 1rem;
+    }
 }
 </style>

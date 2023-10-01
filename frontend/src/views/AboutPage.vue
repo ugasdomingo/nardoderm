@@ -78,4 +78,22 @@ a {
     justify-content: center;
     align-items: center;
 }
+
+@media screen and (max-width: 768px) {
+    .About-container {
+        padding: 0 1rem;
+        padding: 2rem 4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    .logo {
+        img {
+            width: 100%;
+        }
+    }
+}
 </style>

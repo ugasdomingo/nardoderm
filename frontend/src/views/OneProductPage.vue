@@ -108,4 +108,32 @@ onBeforeMount(() => {
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    .product-container {
+        flex-direction: column;
+        padding: 2rem;
+        box-sizing: border-box;
+
+        .left-content {
+            width: 100%;
+            position: relative;
+            top: 0;
+            margin-bottom: 2rem;
+
+            img {
+                max-width: 100%;
+            }
+        }
+
+        .right-content {
+            width: 100%;
+            padding: 0;
+
+            .product-description {
+                font-size: 1rem;
+            }
+        }
+    }
+}
 </style>

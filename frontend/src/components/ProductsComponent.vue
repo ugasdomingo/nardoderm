@@ -21,9 +21,9 @@ onMounted(() => {
     window.addEventListener('scroll', handleScroll);
     // Set products scroll show
     if (path == '/') {
-        product1.value = 1100;
-        product2.value = 1400;
-        product3.value = 1700;
+        product1.value = 800;
+        product2.value = 1200;
+        product3.value = 1500;
     } else {
         product1.value = 0;
         product2.value = 0;
@@ -129,9 +129,12 @@ onUnmounted(() => {
                     color: var(--color-tertiary);
                     text-align: center;
                 }
-                RouterLink {
+                a {
                     font-weight: 700;
-                    color: var(--color-primary);
+                    color: var(--color-white);
+                    background-color: var(--color-primary);
+                    padding: 0.5rem 1rem;
+                    border-radius: 0.5rem;
                     text-decoration: none;
                     &:hover {
                         text-decoration: underline;
@@ -156,6 +159,50 @@ onUnmounted(() => {
     }
     80% {
         transform: translateX(1rem);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .product-container {
+        padding: 2rem;
+        margin: 0;
+        box-sizing: border-box;
+        overflow: hidden;
+        h2 {
+            font-size: 2rem;
+        }
+        h4 {
+            font-size: 1.5rem;
+        }
+        .display-product {
+            margin: 2rem 0;
+            .product {
+                width: 100%;
+                margin: 2rem 0;
+                max-height: fit-content;
+
+                img {
+                    width: 130px;
+                    margin: 0;
+                }
+
+                .content {
+                    padding: 0 1rem;
+                    h3 {
+                        font-size: 1rem;
+                        margin: 0;
+                    }
+                    p {
+                        font-size: 0.5rem;
+                        margin: 0;
+                    }
+                    a {
+                        font-size: 0.5rem;
+                        margin: 0;
+                    }
+                }
+            }
+        }
     }
 }
 </style>
