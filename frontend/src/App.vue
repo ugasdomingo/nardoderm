@@ -25,7 +25,7 @@ onBeforeMount(() => {
         class="icon-container"
         v-if="scrollY > 100"
     >
-        <img src="../../public/whatsapp-icon.svg" alt="icon" class="icon" />
+        <img src="../public/whatsapp-icon.svg" alt="icon" class="icon" />
     </a>
 </template>
 
