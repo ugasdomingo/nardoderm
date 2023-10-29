@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
+//Import tools
+import { useUtilStore } from '../store/util-store';
 
-const links = [
-    { name: 'About', path: '/about' },
-    { name: 'Products', path: '/products' }
-];
+//Import components
+import NavbarComponent from './NavbarComponent.vue';
+
+//Activate tools
+const utilStore = useUtilStore();
 </script>
 
 <template>
@@ -12,71 +14,62 @@ const links = [
         <RouterLink to="/">
             <img src="../assets/img/logo.webp" alt="logo" />
         </RouterLink>
-        <nav>
-            <ul>
-                <li v-for="link in links" :key="link.name">
-                    <RouterLink :to="link.path">
-                        {{ link.name }}
-                    </RouterLink>
-                </li>
-            </ul>
-        </nav>
+        <NavbarComponent :style="'normal'" class="normal-menu" />
+        <div class="responsive-menu">
+            <img
+                src="../../public/hamburguer-menu.svg"
+                alt="menu"
+                class="hamburguer-menu"
+                @click="utilStore.toggleResponsiveMenu"
+            />
+            <NavbarComponent :style="'responsive'" v-if="utilStore.showResponsiveMenu" />
+        </div>
     </header>
 </template>
 
 <style scoped lang="scss">
 header {
-    height: 10%;
+    width: 100%;
+    height: 10vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 4rem;
-    background-color: var(--color-white);
+    padding: 0 6rem;
+    background-color: transparent;
+    position: absolute;
+    top: 1rem;
+    left: 0;
+    z-index: 999;
+    box-sizing: border-box;
 
     img {
-        width: 10%;
+        width: 150px;
     }
-}
 
-nav ul {
-    display: flex;
-    gap: 1.5rem;
-}
-
-nav ul li {
-    list-style: none;
-}
-
-nav ul li a {
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    font-size: 1.5rem;
-    color: var(--color-primary);
-}
-
-nav ul li a:hover {
-    color: var(--color-white);
-    background-color: var(--color-primary);
-    border-radius: 0.5rem;
+    .responsive-menu {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 768px) {
     header {
-        height: 20%;
-        padding: 0 2rem;
+        min-height: 10vh;
+        max-width: 100%;
+        padding: 0 1rem;
 
         img {
             width: 60%;
         }
-    }
 
-    nav ul {
-        flex-direction: column;
-        gap: 1rem;
-    }
+        .responsive-menu {
+            display: flex;
+            justify-content: flex-end;
+            box-sizing: border-box;
+        }
 
-    nav ul li a {
-        font-size: 1rem;
+        .normal-menu {
+            display: none;
+        }
     }
 }
 </style>

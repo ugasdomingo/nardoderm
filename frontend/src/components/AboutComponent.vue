@@ -21,12 +21,12 @@ onUnmounted(() => {
         <img
             src="../assets/img/about-img.webp"
             alt="aboutImg"
-            :class="scrollY >= 200 ? 'animationLeft' : 'hide'"
+            :class="scrollY >= 1600 ? 'animationLeft' : 'hide'"
         />
-        <div :class="scrollY >= 200 ? 'animationRight' : 'hide'">
+        <div :class="scrollY >= 1600 ? 'animationRight' : 'hide'">
             <h2>How we care the planet</h2>
             <h4>Advances of science make easier our daily life!</h4>
-            <RouterLink to="/sostenibilidad"> Read more </RouterLink>
+            <RouterLink to="/about"> Read more </RouterLink>
         </div>
     </section>
 </template>
@@ -38,7 +38,7 @@ onUnmounted(() => {
     justify-content: center;
     padding: 6rem 4rem;
     gap: 2rem;
-    background-color: #f5f5f5;
+    background-color: var(--color-primary);
     img {
         width: 100%;
         max-width: 400px;
@@ -52,7 +52,7 @@ onUnmounted(() => {
         justify-content: center;
         h2 {
             font-weight: 700;
-            color: var(--color-primary);
+            color: var(--color-white);
             margin: 0;
         }
         h4 {
@@ -64,11 +64,12 @@ onUnmounted(() => {
             text-decoration: none;
             padding: 0.5rem 1rem;
             font-size: 1.5rem;
-            color: var(--color-primary);
+            color: var(--color-white);
+            border: 2px solid var(--color-white);
+            border-radius: 0.5rem;
             &:hover {
-                color: var(--color-white);
-                background-color: var(--color-primary);
-                border-radius: 0.5rem;
+                color: var(--color-primary);
+                background-color: var(--color-white);
             }
         }
     }

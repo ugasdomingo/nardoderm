@@ -2,8 +2,11 @@
     <main class="product-container">
         <section class="left-content">
             <h1>{{ product?.title }}</h1>
-            <img :src="productImage" :alt="product?.title" />
-            <a href="https://wa.me/584126696619" target="_blank">PLACE AN ORDER</a>
+            <img :src="product?.imageHd" :alt="product?.title" />
+            <a href="https://wa.me/584126696619" target="_blank">
+                <img src="../../public/whatsapp-icon.svg" alt="phon-icon" class="icon" />
+                PLACE AN ORDER
+            </a>
         </section>
         <section class="right-content">
             <div v-html="product?.description" class="product-description"></div>
@@ -27,7 +30,7 @@ onBeforeMount(() => {
     for (let i = 0; i < productsInfo.length; i++) {
         if (productsInfo[i].path === path) {
             product.value = productsInfo[i];
-            productImage.value = productsInfo[i].imageHD;
+            productImage.value = productsInfo[i].imageHd;
         }
     }
     // If product is null, redirect to 404
@@ -41,20 +44,18 @@ onBeforeMount(() => {
 .product-container {
     display: flex;
     justify-content: space-between;
-    margin: 0 auto;
-    padding: 4rem;
+    margin: 0;
+    padding: 6rem 6rem 4rem;
     width: 100%;
-    max-width: 1200px;
-    min-height: 70vh;
+    min-height: 100vh;
     position: relative;
+    box-sizing: border-box;
 
     .left-content {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 40%;
-        position: sticky;
-        top: 0;
+        width: 50%;
 
         h1 {
             font-weight: 700;
@@ -69,6 +70,9 @@ onBeforeMount(() => {
         }
 
         a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 100%;
             max-width: 400px;
             padding: 1rem 2rem;
@@ -77,15 +81,20 @@ onBeforeMount(() => {
             background-color: var(--color-primary);
             color: var(--color-white);
             font-size: 1.2rem;
-            font-weight: 700;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease-in-out;
             text-align: center;
+            border: 1px solid var(--color-white);
 
             &:hover {
-                background-color: var(--color-white);
-                color: var(--color-primary);
-                border: 1px solid var(--color-primary);
+                background-color: var(--color-secondary);
+                border: 1px solid var(--color-secondary);
+            }
+
+            img {
+                width: 1.2rem;
+                margin-right: 1rem;
             }
         }
     }
@@ -93,8 +102,8 @@ onBeforeMount(() => {
     .right-content {
         display: flex;
         flex-direction: column;
-        width: 50%;
-        padding: 0 4rem 0 0;
+        width: 45%;
+        padding: 0;
 
         .product-description {
             margin-top: 1rem;
@@ -112,7 +121,7 @@ onBeforeMount(() => {
 @media screen and (max-width: 768px) {
     .product-container {
         flex-direction: column;
-        padding: 2rem;
+        padding: 5rem 1rem;
         box-sizing: border-box;
 
         .left-content {
@@ -123,6 +132,10 @@ onBeforeMount(() => {
 
             img {
                 max-width: 100%;
+            }
+
+            a {
+                max-width: 70%;
             }
         }
 

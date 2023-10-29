@@ -3,14 +3,21 @@
   --color-secondary: #6191ae;
   --color-tertiary: #7cbcdc;
   --color-black: #080809;
-  --color-blackTrans: #08080979;
+  --color-blackTrans: #08080927;
   --color-white: #e3eced;
+  --color-green: #009A11;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../public/Poppins-Regular.ttf");
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
   box-sizing: border-box;
 }
 
@@ -23,7 +30,11 @@ h2 {
   font-size: 4rem;
   font-weight: 700;
 }
-
+h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
 h4 {
   font-size: 2rem;
   font-weight: 400;

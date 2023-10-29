@@ -5,9 +5,12 @@ import { RouterLink } from 'vue-router';
 <template>
     <section class="hero-container">
         <img src="../assets/img/hero.webp" alt="hero" class="hero-big" />
-        <h1>Serving Science</h1>
-        <h3>And Technology</h3>
-        <router-link to="/products">Products</router-link>
+        <h1>Somos Nardo Derm</h1>
+        <h3>
+            Nuestro compromiso es mejorar la calidad de vida de las pieles grasas, acneicas y con
+            manchas.
+        </h3>
+        <router-link to="/products">Ver Productos</router-link>
     </section>
 </template>
 
@@ -17,10 +20,12 @@ import { RouterLink } from 'vue-router';
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 90vh;
+    width: 100%;
+    height: 100vh;
     background-color: transparent;
     color: var(--color-primary);
     position: relative;
+    box-sizing: border-box;
 
     .hero-big {
         position: absolute;
@@ -41,6 +46,8 @@ import { RouterLink } from 'vue-router';
     }
 
     h3 {
+        width: 60%;
+        text-align: center;
         font-size: 2rem;
         font-weight: 400;
         margin-top: 0;
@@ -105,10 +112,22 @@ import { RouterLink } from 'vue-router';
 
 @media screen and (max-width: 768px) {
     .hero-container {
+        width: 100%;
+        padding: 0 1rem;
         h1 {
-            font-size: 3rem;
+            font-size: 3.2rem;
+            text-shadow: 0px 1px 10px rgba(34, 34, 34, 0.671);
         }
         h3 {
+            width: 100%;
+            font-size: 1.5rem;
+            text-align: left;
+            text-shadow: 0px 1px 10px rgba(34, 34, 34, 0.671);
+        }
+
+        a {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
             font-size: 1.5rem;
         }
     }

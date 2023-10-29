@@ -28,28 +28,32 @@
             Thank you for choosing Nardo Derm as your skincare partner. We look forward to helping
             you achieve the radiant, healthy skin you deserve.
         </p>
-        <a href="https://wa.me/584126696619"> Contactar </a>
+        <a href="https://wa.me/584126696619" target="_blank">
+            <img src="../../public/whatsapp-icon.svg" alt="phon-icon" class="icon" />
+            contact us
+        </a>
+        <img src="../assets/img/logo.webp" alt="logo" class="logo" />
     </main>
-    <section class="logo">
-        <img src="../assets/img/logo.webp" alt="Nardo Derm Logo" />
-    </section>
 </template>
 
 <script setup lang="ts"></script>
 
 <style scoped lang="scss">
 .About-container {
-    padding: 0 1rem;
-    padding: 4rem;
+    padding: 6rem 6rem 0;
+    position: relative;
+    box-sizing: border-box;
 }
 
 h1 {
     margin-bottom: 1rem;
+    color: var(--color-primary);
 }
 
 h2 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    color: var(--color-secondary);
 }
 
 p {
@@ -58,9 +62,13 @@ p {
 }
 
 a {
-    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    margin: 3rem auto 0;
     font-size: 1.25rem;
-    color: var(--color-white);
+    color: var(--color-black);
     background-color: var(--color-primary);
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
@@ -68,21 +76,25 @@ a {
 
     &:hover {
         background-color: var(--color-white);
-        color: var(--color-primary);
-        border: 1px solid var(--color-primary);
+        border: 1px solid var(--color-tertiary);
     }
 }
 
 .logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    top: 10vh;
+    right: 30%;
+    opacity: 0.3;
+    z-index: -1;
+}
+.icon {
+    width: 1.25rem;
+    margin-right: 1rem;
 }
 
 @media screen and (max-width: 768px) {
     .About-container {
-        padding: 0 1rem;
-        padding: 2rem 4rem;
+        padding: 5rem 1rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -91,9 +103,12 @@ a {
     }
 
     .logo {
-        img {
-            width: 100%;
-        }
+        right: 0;
+        top: 30vh;
+    }
+
+    a {
+        width: 80%;
     }
 }
 </style>
