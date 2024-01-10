@@ -7,8 +7,8 @@ import { RouterLink } from 'vue-router';
         <img src="../assets/img/hero.webp" alt="hero" class="hero-big" />
         <h1>Somos Nardo Derm</h1>
         <h3>
-            Nuestro compromiso es mejorar la calidad de vida de las pieles grasas, acneicas y con
-            manchas.
+            Nuestro Compromiso es mejorar la calidad de vida de los usuarios que padecen de manchas
+            y pieles grasas con tendencia a acneicas.
         </h3>
         <router-link to="/products">Ver Productos</router-link>
     </section>
@@ -18,10 +18,11 @@ import { RouterLink } from 'vue-router';
 .hero-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: end;
     justify-content: center;
     width: 100%;
     height: 100vh;
+    padding-right: 4rem;
     background-color: transparent;
     color: var(--color-primary);
     position: relative;
@@ -35,6 +36,7 @@ import { RouterLink } from 'vue-router';
         height: 100%;
         object-fit: cover;
         object-position: center;
+        opacity: 0.85;
         z-index: -1;
     }
 
@@ -47,27 +49,29 @@ import { RouterLink } from 'vue-router';
 
     h3 {
         width: 60%;
-        text-align: center;
-        font-size: 2rem;
-        font-weight: 400;
+        font-size: 1.5rem;
+        font-weight: 200;
+        line-height: 1.2;
+        text-align: right;
         margin-top: 0;
+        color: var(--color-black);
         animation: moveInRight 1s ease-in-out;
     }
 
     a {
         margin-top: 2rem;
-        padding: 1rem 2rem;
-        background-color: var(--color-primary);
-        color: var(--color-white);
+        padding: 0.5rem 1rem;
+        color: var(--color-primary);
         text-decoration: none;
+        font-size: 1.25rem;
+        background-color: transparent;
+        border: 1px solid var(--color-primary);
         border-radius: 5px;
-        font-size: 1.5rem;
-        font-weight: 700;
         transition: all 0.3s ease-in-out;
         animation: fadeIn 1s ease-in-out;
 
         &:hover {
-            background-color: var(--color-secondary);
+            background-color: var(--color-primary);
         }
     }
 }

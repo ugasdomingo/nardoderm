@@ -28,7 +28,7 @@ const productImage = ref();
 // Get product from productsInfo
 onBeforeMount(() => {
     for (let i = 0; i < productsInfo.length; i++) {
-        if (productsInfo[i].path === path) {
+        if (productsInfo[i].path === `products/${path}`) {
             product.value = productsInfo[i];
             productImage.value = productsInfo[i].imageHd;
         }

@@ -21,9 +21,9 @@ onUnmounted(() => {
         <img
             src="../assets/img/about-img.webp"
             alt="aboutImg"
-            :class="scrollY >= 1600 ? 'animationLeft' : 'hide'"
+            :class="scrollY >= 1000 ? 'animationLeft' : 'hide'"
         />
-        <div :class="scrollY >= 1600 ? 'animationRight' : 'hide'">
+        <div :class="scrollY >= 1000 ? 'animationRight' : 'hide'">
             <h2>How we care the planet</h2>
             <h4>Advances of science make easier our daily life!</h4>
             <RouterLink to="/about"> Read more </RouterLink>
