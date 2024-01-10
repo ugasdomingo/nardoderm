@@ -19,12 +19,7 @@ onBeforeMount(() => {
 <template>
     <HeaderComponent />
     <RouterView />
-    <a
-        href="https://wa.me/584126696619"
-        target="_blank"
-        class="icon-container"
-        v-if="scrollY > 100"
-    >
+    <a href="#" target="_blank" class="icon-container" v-if="scrollY > 100">
         <img src="../public/whatsapp-icon.svg" alt="icon" class="icon" />
     </a>
 </template>

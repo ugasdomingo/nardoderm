@@ -3,7 +3,7 @@
         <section class="left-content">
             <h1>{{ product?.title }}</h1>
             <img :src="product?.imageHd" :alt="product?.title" />
-            <a href="https://wa.me/584126696619" target="_blank">
+            <a href="#" target="_blank">
                 <img src="../../public/whatsapp-icon.svg" alt="phon-icon" class="icon" />
                 PLACE AN ORDER
             </a>

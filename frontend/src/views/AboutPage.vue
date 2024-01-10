@@ -28,7 +28,7 @@
             Thank you for choosing Nardo Derm as your skincare partner. We look forward to helping
             you achieve the radiant, healthy skin you deserve.
         </p>
-        <a href="https://wa.me/584126696619" target="_blank">
+        <a href="#" target="_blank">
             <img src="../../public/whatsapp-icon.svg" alt="phon-icon" class="icon" />
             contact us
         </a>
